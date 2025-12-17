@@ -10,4 +10,18 @@ spec:
       port: 80
       targetPort: 80
   type: NodePort  # use ClusterIP if you don't need external access
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservice2-service
+spec:
+  selector:
+    app: microservice2
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 31235  # choose a NodePort in your range (30000-32767)
+  type: NodePort
 

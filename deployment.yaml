@@ -17,4 +17,24 @@ spec:
         image: haftuabadi/registration-app:latest
         ports:
         - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: microservice2
+  template:
+    metadata:
+      labels:
+        app: microservice2
+    spec:
+      containers:
+      - name: microservice2
+        image: haftuabadi/microservice2:latest
+        ports:
+        - containerPort: 80
 
