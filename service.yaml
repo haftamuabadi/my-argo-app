@@ -1,11 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-service
+  name: registration-service
 spec:
   selector:
-    app: nginx
+    app: registration-app
   ports:
-    - port: 80
+    - protocol: TCP
+      port: 80
       targetPort: 80
-  type: ClusterIP
+  type: NodePort  # use ClusterIP if you don't need external access
+
