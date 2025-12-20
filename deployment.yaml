@@ -12,6 +12,8 @@ spec:
       labels:
         app: registration-app
     spec:
+      nodeSelector:
+        node-role: worker
       containers:
       - name: registration-app
         image: haftuabadi/registration-app:latest
