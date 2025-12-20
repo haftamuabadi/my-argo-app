@@ -1,7 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-apps
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: registration-app
+  namespace: my-apps
 spec:
   replicas: 2
   selector:
@@ -24,6 +30,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: microservice2
+  namespace: my-apps
 spec:
   replicas: 2
   selector:
@@ -34,6 +41,8 @@ spec:
       labels:
         app: microservice2
     spec:
+      nodeSelector:
+        node-role: worker
       containers:
       - name: microservice2
         image: haftuabadi/microservice2:latest
